@@ -27,7 +27,7 @@ def search(puzzle, heuristic):
 
 def main(): #the uper input function
         print ("Welcome to Bertie Woosters 8-puzzle solver")
-        puzzle = [[1,4,5],[6,7,8],[0,2,3]]
+        puzzle = [[3,2,8],[4,5,6],[7,1,0]] #a default puzzle the user can use
         option = input("Type '1' to use a default puzzle, or '2' to enter your own puzzle:\n")
         print("\nYou have choosen option " + option)
 
@@ -38,7 +38,7 @@ def main(): #the uper input function
             print("default puzzle")
             print(puzzle)
         elif (option == '2'):
-            puzzle=[]
+            puzzle=[] #creating a puzzle matrix so user can input values
             for i in range(3):
                 row_list=[]
                 row_list = input().split()
@@ -56,21 +56,39 @@ def main(): #the uper input function
         algochoice = int(input("\t1. Uniform Cost Search \n\t2. A* with the Misplaced Tile heuristic.\n\t3. A* with the Manhattan distance heuristic.\n"))
 
         if (algochoice == 1):
-            print("you choose 1")
+            #print("you choose 1")
             search(puzzle, 0)
         elif (algochoice == 2):
-            print("you choose 2")
+            #print("you choose 2")
             heuristic = 0;
             for i in range(3):
                 for j in range(3):
-                    if (puzzle[i][j] != goalstate[i][j]):
+                    #making sure not to add when the goal is zero
+                    if (puzzle[i][j] != goalstate[i][j] and puzzle[i][j] != 0):
                         heuristic += 1
-            heuristic -= 1
+            #heuristic -= 1 # subtracting 1 since the value 0 does not need to be counted
+            print("The heuristic is ")
             print(heuristic)
             search(puzzle,heuristic)
+
+        #TODO: finish this function and correctly do for loop
+
         elif (algochoice == 3):
-            print("you choose 3")
-            search(puzzle,)
+            heuristic = 0
+            for i in range(3):
+                for j in range(3):
+                    temp = puzzle[i][j]
+                    print(temp)
+                    for x,y in zip(range(3), range(3)):
+                        #if the temp val is equal to goal state, go through and
+                        #find the manhattan distance by subtracting the emelments
+                        #from the current position 
+                        if (temp == goalstate[x][y] and temp!=0):
+                            heuristic += abs(x-temp) + abs(y-temp)
+            print("heuristic is: ")
+            print(heuristic)
+            #print("you choose 3")
+            search(puzzle,0)
         else:
             print("invalid input")
 
