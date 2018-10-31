@@ -34,70 +34,68 @@ int main() {
     }
     //they have choosen for a self made puzzle
     else if (input == 2) {
-      string num;
-      cout << "Enter your puzzle, user a zero to represent the blank" << endl;
-      cout << "Enter the first row, use space or tabs between numbers:";
+        string num;
+        cout << "Enter your puzzle, user a zero to represent the blank" << endl;
+        cout << "Enter the first row, use space or tabs between numbers:";
 
-      //getting first row of user input
-      cin.ignore(); //solving problem of no user input being asked
-      getline(cin, num);
-      cout << "string entered for row 1:" << num << endl;
+        //getting first row of user input
+        cin.ignore(); //solving problem of no user input being asked
+        getline(cin, num);
+        cout << "string entered for row 1:" << num << endl;
 
-      //getting the user value for the first row and saving it into the puzzle
-      int k = 0;
-      for (int i = 0; i < num.length(); i++) {
-        cout << "i val: " << i << endl;
-          while (num[i] == ' ' || num[i] == '\t'){
-              i++;
-          }
-          cout << "num val at index " << k << " : "  << num[i] - 48 << " ";
-          puzzle.puzzlelayout[k] = num[i] - 48;
-          cout <<  "puzzle val: " << puzzle.puzzlelayout[k] << " " << endl;
-          k++;
-      }
-
-      //getting line 2 of user input
-      cout << endl << "Please enter the second row: ";
-      getline(cin, num);
-      cout << "string entered for row 2:" << num << endl;
-      //getting the user value for the second row and saving it into the puzzle
-      k = 3;
-      for (int i = 0; i < num.length(); i++) {
-          while (num[i] == ' ' || num[i] == '\t'){
-              i++;
-          }
-          puzzle.puzzlelayout[k] = num[i] - '0';
-          cout << "num val: " << num[i] - '0' ;
-          cout <<  "puzzle val: " << puzzle.puzzlelayout[k] << " " << endl;
+        //getting the user value for the first row and saving it into the puzzle
+        int k = 0;
+        for (int i = 0; i < num.length(); i++) {
+          cout << "i val: " << i << endl;
+            while (num[i] == ' ' || num[i] == '\t'){
+                i++;
+            }
+            cout << "num val at index " << k << " : "  << num[i] - 48 << " ";
+            puzzle.puzzlelayout[k] = num[i] - 48;
+            cout <<  "puzzle val: " << puzzle.puzzlelayout[k] << " " << endl;
             k++;
+        }
 
-      }
+        //getting line 2 of user input
+        cout << endl << "Please enter the second row: ";
+        getline(cin, num);
+        cout << "string entered for row 2:" << num << endl;
+        //getting the user value for the second row and saving it into the puzzle
+        k = 3;
+        for (int i = 0; i < num.length(); i++) {
+            while (num[i] == ' ' || num[i] == '\t'){
+                i++;
+            }
+            puzzle.puzzlelayout[k] = num[i] - '0';
+            cout << "num val: " << num[i] - '0' ;
+            cout <<  "puzzle val: " << puzzle.puzzlelayout[k] << " " << endl;
+              k++;
 
-      //getting line 3 of user inputted
-      //getting line 2 of user input
-      cout << endl << "Please enter the third row: ";
-      getline(cin, num);
-      cout << "string entered for row 3:" << num << endl;
-      //getting the user value for the second row and saving it into the puzzle
-      k = 6;
-      for (int i = 0; i < num.length(); i++) {
-          while (num[i] == ' ' || num[i] == '\t'){
-              i++;
-          }
-            cout << "num val: " << num[i] - 48 << " ";
-          puzzle.puzzlelayout[k] = num[i] - '0';
-          cout <<  "puzzle val: " << puzzle.puzzlelayout[k] << endl;
-          k++;
-      }
+        }
 
-      cout << "\n\nfinal puzzle: " << endl;
-      for (int i = 0; i < 9; i++) {
-        cout << puzzle.puzzlelayout[i] << " ";
-      }
+        //getting line 3 of user inputted
+        //getting line 2 of user input
+        cout << endl << "Please enter the third row: ";
+        getline(cin, num);
+        cout << "string entered for row 3:" << num << endl;
+        //getting the user value for the second row and saving it into the puzzle
+        k = 6;
+        for (int i = 0; i < num.length(); i++) {
+            while (num[i] == ' ' || num[i] == '\t'){
+                i++;
+            }
+              cout << "num val: " << num[i] - 48 << " ";
+            puzzle.puzzlelayout[k] = num[i] - '0';
+            cout <<  "puzzle val: " << puzzle.puzzlelayout[k] << endl;
+            k++;
+        }
+        cout << "\n\nfinal puzzle: " << endl;
+        for (int i = 0; i < 9; i++) {
+          cout << puzzle.puzzlelayout[i] << " ";
+        }
+    } //end of option 2
 
-    }
-
-    else {
+    else { // entering something incorrect
       cout <<"not an option" << endl;
     }
   return 0;
